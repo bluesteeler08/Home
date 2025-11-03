@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Creative Force Wrestling (CFW)</title>
+  <meta name="description" content="CFW is a gritty, story-first indie eFed: Black Light, major events, dice-based match outcomes, and living records from The Foundry." />
+  <!-- Social share -->
+  <meta property="og:title" content="Creative Force Wrestling" />
+  <meta property="og:description" content="Underground. Unpredictable. Story-first. Live from The Foundry." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-cover.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="assets/favicon.png" />
+  <style>
+    :root{
+      --bg:#0b0b0f;
+      --panel:#14141c;
+      --ink:#e9e9ef;
+      --muted:#a5a6b2;
+      --accent:#7df9ff;     /* neon ice */
+      --accent2:#b26fff;    /* neon violet */
+      --brand:#ff3366;      /* punchy magenta */
+      --ring:#1d1d28;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:radial-gradient(1200px 600px at 10% -10%, #191a23 0%, #0b0b0f 55%, #09090c 100%);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{color:var(--accent2)}
+    .wrap{max-width:1120px;margin:auto;padding:20px}
+    header.hero{
+      position:relative;border:1px solid #242437;background:
+        linear-gradient(180deg, rgba(125,249,255,.08), rgba(178,111,255,.06)),
+        radial-gradient(900px 500px at 80% -20%, rgba(255,51,102,.12), transparent 60%),
+        var(--panel);
+      border-radius:var(--radius);
+      padding:28px 22px 22px;box-shadow:var(--shadow);overflow:hidden
+    }
+    .badge{display:inline-flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;border:1px solid #2a2a3d;border-radius:999px;padding:6px 10px;background:#12121a}
+    .hero h1{margin:.6rem 0 0;font-size:clamp(24px,3vw,34px);line-height:1.05}
+    .hero p.sub{color:var(--muted);max-width:60ch;margin:.6rem 0 1.2rem}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid #2a2a3d;background:#12121a;color:var(--ink);font-weight:600}
+    .btn.primary{background:linear-gradient(90deg,var(--brand),var(--accent2));border-color:transparent}
+    .btn span.small{opacity:.8;font-weight:500;font-size:12px}
+    .grid{display:grid;gap:16px;margin-top:18px}
+    @media (min-width:900px){.grid.cols-3{grid-template-columns:2fr 1fr 1fr}.grid.cols-2{grid-template-columns:1.3fr 1fr}}
+    .card{background:var(--panel);border:1px solid #242437;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .card .thumb{position:relative;aspect-ratio:4/3;background:var(--ring)}
+    /* responsive images without awkward crop on mobile */
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .card .body{padding:14px 14px 16px}
+    .eyebrow{font-size:12px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+    h3{margin:.3rem 0 .3rem;font-size:18px}
+    p{color:#cacad6}
+    .list{display:grid;gap:10px;padding:0;margin:0;list-style:none}
+    .list li{display:flex;gap:10px;padding:10px;border:1px solid #242437;border-radius:12px;background:#101019;align-items:center}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent2);box-shadow:0 0 10px var(--accent2)}
+    .footer{margin-top:26px;padding:20px;color:var(--muted);text-align:center;border-top:1px solid #1f1f2c}
+    /* header band */
+    .band{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.pill {
+  padding: 6px 12px;
+  border: 1px solid rgba(60, 120, 150, 0.2);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(20, 30, 45, 0.9), rgba(10, 20, 35, 0.9));
+  color: #a0b8d8; /* muted ice-blue */
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.15px;
+  box-shadow: 0 0 6px rgba(60, 120, 180, 0.08);
+  transition: all 0.25s ease;
+}
+
+.pill:hover {
+  background: linear-gradient(135deg, rgba(30, 50, 75, 0.95), rgba(15, 25, 45, 0.95));
+  box-shadow: 0 0 10px rgba(80, 140, 200, 0.15);
+  transform: translateY(-1px);
+}
+
+    /* marquee line */
+    .marquee{margin:18px 0 6px;border-left:3px solid var(--brand);padding-left:10px;color:#f4d7e0;font-weight:600}
+    /* Make the Kingdom Come / News section square */
+    
+.grid.cols-2 .thumb {
+  aspect-ratio: 1/1; /* 1 wide, 1 tall */
+  background: var(--ring);
+}
+
+.grid.cols-2 .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fills the square cleanly */
+  display: block;
+}
+.discord-widget {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+/* === Replace Foundry text badge with CFW logo === */
+.logo-badge {
+  background: #0b0b0f;
+  border: 1px solid #2a2a3d;
+  border-radius: 20px;
+  padding: 6px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.logo-badge img {
+  height: 90px; /* adjust until it feels right */
+  width: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Force smaller header title */
+.hero h1 {
+  font-size: clamp(22px, 3vw, 32px) !important;
+  line-height: 1.05;
+}
+/* --- Replace Join Discord button with custom E-Fed Hub design --- */
+.btn.hub {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #ffb36a 0%, #e77c1f 50%, #c86000 100%);
+  border: 1px solid #8a4612;
+  color: #1b1208;
+  font-weight: 700;
+  padding: 7px 15px;
+  border-radius: 12px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 8px 24px rgba(200, 96, 0, 0.25);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+.btn.hub:hover {
+  transform: translateY(-1px);
+  filter: saturate(1.05);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+    0 12px 28px rgba(200, 96, 0, 0.35);
+}
+
+.btn.hub img {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  display: block;
+}
+
+.btn.hub span {
+  line-height: 1;
+  white-space: nowrap;
+}
+.grid.cols-2 .card:first-child { max-width:600px; margin:0 auto; }
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- HERO -->
+    <header class="hero">
+        <!-- E-Fed Hub Discord Widget -->
+<div class="discord-widget">
+  <iframe
+    src="https://discord.com/widget?id=1426563831882190968&theme=dark"
+    width="350"
+    height="200"
+    allowtransparency="true"
+    frameborder="0"
+    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+  ></iframe>
+</div>
+
+      <div class="badge logo-badge">
+  <img src="images/cfwlogo.jpg" alt="CFW Logo">
+</div>
+
+      <h1>Creative Force Wrestling</h1>
+      <p class="sub">An underground, story-first wrestling RPG where dice decide the outcomes and fantasy booking becomes reality.</p>
+      <div class="cta-row">
+        <a class="btn hub" href="https://discord.gg/7fq5HNt" target="_blank" rel="noopener" aria-label="Join the E-Fed Hub on Discord">
+  <img src="images/hub.jpg" alt="E-Fed Hub logo" aria-hidden="true">
+  <span>Join the E-Fed Hub</span>
+</a>
+        <a class="btn" href="https://roster.creativeforcewrestling.com/">👥 Roster / Match Randomizer</a>
+        <a class="btn" href="archive/index.html">🗂️ Show Archive</a>
+        <a class="btn" href="records/index.html">📊 Records</a>
+      </div>
+      <div class="band">
+        <span class="pill">⚙️ Create A Character</span>
+        <span class="pill">✍️ Roleplay Your Story</span>
+        <span class="pill">🎲 Let Dice Decide Your Fate</span>
+        <span class="pill">🧠 Pitch storylines</span>
+        <span class="pill">🌍 Shape The World With Booking</span>
+      </div>
+    </header>
+
+    <!-- TOP ROW -->
+    <section class="grid cols-3">
+      <!-- Latest Feature -->
+      <article class="card">
+        <div class="thumb">
+          <img src="images/rnitbck.jpg" alt="Run It Back event poster"/>
+        </div>
+        <div class="body">
+          <div class="eyebrow">Latest PPV</div>
+          <h3>CFW: Run It Back</h3>
+          <p>Dominic Hex’s undefeated streak has been the obsession of CFW — and at Run It Back, Águila Feral finally got his shot to break it. The hunt for immortality met pure violence. Did the streak survive?</p>
+          <a class="btn" href="https://shows.creativeforcewrestling.com/run_it_back.pdf">Read Results →</a>
+        </div>
+      </article>
+
+      <!-- Quick Links -->
+      <aside class="card">
+        <div class="body">
+          <div class="eyebrow">Jump Into The Latest</div>
+          <br>
+          <ul class="list">
+            <li><span class="dot"></span> <a href="https://shows.creativeforcewrestling.com/speedrun2.pdf">SpeedRun: Episode 2</a></li>
+            <li><span class="dot"></span> <a href="https://shows.creativeforcewrestling.com/blacklight22.pdf">Black Light: Episode 22</a></li>
+            <li><span class="dot"></span> <a href="https://shows.creativeforcewrestling.com/blacklight23.pdf">Black Light: Episode 23</a></li>
+            <li><span class="dot"></span> <a href="https://shows.creativeforcewrestling.com/blacklight24.pdf">Black Light: Episode 24</a></li>
+            <li><span class="dot"></span> <a href="https://shows.creativeforcewrestling.com/blacklight25.pdf">Black Light: Episode 25</a></li>
+            <li><span class="dot"></span> <a href="https://shows.creativeforcewrestling.com/speedrun3.pdf">SpeedRun: Episode 3</a></li>
+            <li><span class="dot"></span> <a href="https://shows.creativeforcewrestling.com/speedrun4.pdf">SpeedRun: Episode 4</a></li>
+            <li><span class="dot"></span> <a href="https://shows.creativeforcewrestling.com/blacklight26.pdf">Black Light: Episode 26</a></li>
+            <li><span class="dot"></span> <a href="https://shows.creativeforcewrestling.com/run_it_back.pdf">Run It Back PPV</a></li>
+            <li><span class="dot"></span> <a href="https://shows.creativeforcewrestling.com/blacklight27.pdf">Black Light: Episode 27</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- New to CFW -->
+      <aside class="card">
+        <div class="body">
+          <div class="eyebrow">New Here?</div>
+          <h3>What is CFW?</h3>
+          <p>CFW started as a solo eFed role-playing game built with the help of ChatGPT. I handle the booking, storylines, and creative direction, while a dice system decides the winners — forcing me to book around the results. Every show is written in an old-school Word-doc style, complete with AI-generated visuals to bring the world at The Foundry to life. It’s a blend of storytelling, luck, and imagination — part RPG, part wrestling show.</p>
+          <p>CFW is open to contributors, role-players, and creative minds who want to help the world grow — whether through story ideas, artwork, or new character concepts. It’s meant to evolve with community input and imagination.</p>
+          <a class="btn" href="https://discord.gg/jbjGpJGQDY"><span>Learn More On Discord →</span></a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- News strip -->
+    <div class="marquee">News</div>
+    <section class="grid cols-2">
+      <article class="card">
+        <div class="thumb"><img src="images/kk.jpg" alt="Kingdom Come poster teaser"></div>
+        <div class="body">
+          <div class="eyebrow">Upcoming PPV</div>
+          <h3>Kingdom Come</h3>
+          <p>The stage is set for Sun Jan 4. Both World Championships hang in the balance — the Women’s Division crowns its first champion as the points war ends, and Jace Valor steps into destiny to prove what it truly means to earn a title.</p>
+          <a class="btn" href="https://discord.gg/jbjGpJGQDY">Learn More On Discord →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb"><img src="images/sudio.jpg" alt="SpeedRun ring photo"></div>
+        <div class="body">
+          <div class="eyebrow">developing</div>
+          <h3>Sudio Choses Opponent For Title Opportunity </h3>
+          <p>After wrapping up the intense points battle at Run It Back, Sudio steps into the spotlight to reveal who she’s choosing for the Women’s Championship match at Kingdom Come. The announcement shakes up the division — and sets the stage for the biggest showdown of the year.</p>
+          <a class="btn" href="https://shows.creativeforcewrestling.com/blacklight27.pdf ">See Episodes →</a>
+        </div>
+      </article>
+    </section>
+
+    <footer class="footer">
+      © <span id="y"></span> Creative Force Wrestling · Built with grit & dice.
+      <div style="margin-top:6px">
+        Contact: <a href="https://discord.gg/jbjGpJGQDY">Reach Out On Discord</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
