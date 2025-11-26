@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XNRKS0V16H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XNRKS0V16H');
+  </script>
+
+  <!-- Basic Meta -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d0d0f">
+
+  <!-- SEO -->
+  <title>How to Play – Creative Force Wrestling</title>
+  <meta name="description" content="Learn how to play Creative Force Wrestling: an eFed / wrestling RPG where dice decide every match. Create a wrestler, join the stories, and help book the world.">
+  <meta property="og:title" content="How to Play – Creative Force Wrestling">
+  <meta property="og:description" content="CFW is an eFed and wrestling RPG. Learn how the dice system works, how shows are written, and how to join with your own character.">
+  <meta property="og:image" content="https://creativeforcewrestling.com/images/cfwlogo.jpg">
+  <meta property="og:url" content="https://shows.creativeforcewrestling.com/how-to-play.html">
+  <meta property="og:type" content="website">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.png">
+
+  <style>
+    :root{
+      --bg:#0b0b0f;
+      --panel:#14141c;
+      --panel2:#1b1b24;
+      --border:#242437;
+      --ink:#e9e9ef;
+      --muted:#a5a6b2;
+      --accent:#3ea8ff;   /* section titles (blue) */
+      --hover:#b26fff;    /* hover purple */
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font:16px/1.65 Inter, system-ui, Segoe UI, Arial, sans-serif;
+    }
+
+    header{
+      position:relative;
+      max-width:1120px;
+      margin:24px auto 0;
+      padding:18px 18px 24px;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:
+        linear-gradient(180deg, rgba(125,249,255,.08), rgba(178,111,255,.06)),
+        var(--panel);
+      box-shadow:var(--shadow);
+    }
+
+    .topbar{display:flex;align-items:center;gap:16px}
+    .logo-badge{
+      background:#0b0b0f;border:1px solid #2a2a3d;border-radius:20px;
+      padding:6px 14px;display:inline-flex;align-items:center;justify-content:center;
+      box-shadow:0 0 12px rgba(0,0,0,.4)
+    }
+    .logo-badge img{height:85px;width:auto;border-radius:8px;display:block}
+
+    .titles h1{margin:0;font-size:clamp(22px,3vw,30px);line-height:1.05}
+    .titles p{margin:6px 0 0;color:var(--muted);max-width:640px}
+
+    main{max-width:1120px;margin:18px auto 80px;padding:0 18px}
+    section{margin:28px 0 44px}
+
+    h2{
+      margin:0 0 14px;letter-spacing:.12em;font-size:.92rem;text-transform:uppercase;
+      color:var(--accent);
+    }
+
+    .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .list{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+
+    .card,.item{
+      position:relative;
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px 16px;
+      box-shadow:var(--shadow);
+      transition:transform .15s, background .15s, border-color .15s;
+    }
+    .card:hover,.item:hover{background:var(--panel2);border-color:#3a3a44;transform:translateY(-2px)}
+
+    /* Subtle frosty blue tint for all cards that are NOT style-pop */
+.card:not(.style-pop) {
+  background:
+    radial-gradient(circle at top left,
+      rgba(160, 195, 230, 0.16),
+      transparent 55%
+    ),
+    radial-gradient(circle at bottom right,
+      rgba(90, 120, 160, 0.14),
+      transparent 60%
+    ),
+    var(--panel);
+  border-color: rgba(140, 170, 210, 0.45);
+}
+
+.card:not(.style-pop):hover {
+  background:
+    radial-gradient(circle at top left,
+      rgba(180, 210, 240, 0.22),
+      transparent 55%
+    ),
+    radial-gradient(circle at bottom right,
+      rgba(110, 140, 180, 0.20),
+      transparent 60%
+    ),
+    var(--panel2);
+  border-color: rgba(175, 205, 245, 0.75);
+}
+
+
+    a{color:#7ef3ff;text-decoration:none;font-weight:500;transition:color .15s ease}
+    a:hover{color:var(--hover)}
+
+    .is-ready a::before{
+      content:"";
+      display:inline-block;width:10px;height:10px;border-radius:50%;
+      background:var(--hover);
+      box-shadow:0 0 8px var(--hover),0 0 15px rgba(178,111,255,.5);
+      margin-right:10px;vertical-align:middle;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .is-ready a:hover::before{
+      transform:scale(1.2);
+      box-shadow:0 0 10px #c78eff,0 0 18px rgba(199,142,255,.6)
+    }
+
+    footer{color:var(--muted);text-align:center;padding:20px 0;border-top:1px solid #1f1f2c}
+
+    .page-title {
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .page-title .subnav-inline {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-left: 14px;
+      white-space: nowrap;
+    }
+
+    .page-title .subnav-inline a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color .25s ease;
+    }
+
+    .page-title .subnav-inline a:hover {
+      color: #c084fc; /* purple hover */
+    }
+
+    /* Extra styling for How To Play content */
+    .lead {
+      color: var(--muted);
+      max-width: 720px;
+      margin-top: 10px;
+    }
+
+    .badge-inline {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:0.88rem;
+      padding:3px 9px;
+      border-radius:999px;
+      border:1px solid #323248;
+      background:#101018;
+      color:var(--muted);
+    }
+
+    .badge-inline span.emoji {
+      font-size:1rem;
+    }
+
+    /* Form styling */
+    form {
+      margin-top: 10px;
+      display: grid;
+      gap: 12px;
+    }
+
+    label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      display:block;
+      margin-bottom:4px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px 11px;
+      border-radius: 10px;
+      border: 1px solid #2a2a3f;
+      background: #101018;
+      color: var(--ink);
+      font: 0.95rem/1.5 Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      outline: none;
+      transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--hover);
+      box-shadow:0 0 0 1px rgba(178,111,255,.4);
+      background:#141422;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display:grid;
+      gap:10px;
+    }
+
+    @media (min-width: 720px) {
+      .form-row.two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .submit-row {
+      margin-top: 6px;
+      display:flex;
+      justify-content:flex-start;
+    }
+
+    button[type="submit"] {
+      border:none;
+      border-radius:999px;
+      padding:9px 18px;
+      font-weight:600;
+      font-size:0.95rem;
+      cursor:pointer;
+      background:linear-gradient(135deg,#7ef3ff,#b26fff);
+      color:#050509;
+      box-shadow:0 10px 25px rgba(0,0,0,.4);
+      transition:transform .1s ease, box-shadow .1s ease, filter .1s ease;
+    }
+
+    button[type="submit"]:hover {
+      transform:translateY(-1px);
+      filter:brightness(1.05);
+      box-shadow:0 14px 30px rgba(0,0,0,.45);
+    }
+
+    button[type="submit"]:active {
+      transform:translateY(1px);
+      box-shadow:0 7px 14px rgba(0,0,0,.35);
+    }
+
+    .helper-text {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+.card.style-pop {
+  background:
+    radial-gradient(circle at top right, rgba(150,190,255,0.20), transparent 65%),
+    radial-gradient(circle at bottom left, rgba(170,210,255,0.18), transparent 60%),
+    linear-gradient(140deg, rgba(55,70,100,0.60), rgba(30,40,60,0.60));
+  border: 1px solid rgba(165,200,255,0.25);
+  border-radius: 14px;
+  backdrop-filter: blur(2px);
+}
+
+form label,
+.form-group label,
+.field-label {
+    color: #ffffff !important;
+}
+
+/* Stronger borders for form inputs */
+form input,
+form select,
+form textarea {
+  border: 1.5px solid rgba(140, 170, 210, 0.35); /* subtle but visible */
+  background: var(--panel);
+  color: var(--text);
+  border-radius: 10px;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+/* Focus effect (when clicked or typing) */
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: rgba(180, 210, 255, 0.85);
+  box-shadow: 0 0 8px rgba(160, 195, 255, 0.3);
+  background: var(--panel2);
+  outline: none;
+}
+/* Stronger outline for ALL form fields */
+form input[type="text"],
+form input[type="email"],
+form input[type="url"],
+form input[type="number"],
+form input[type="password"],
+form select,
+form textarea {
+  background: #050509;
+  border: 1px solid #3a3a58;      /* brighter, cleaner outline */
+  border-radius: 10px;
+  color: #f5f5ff;
+  outline: none;
+}
+
+/* Focus state – subtle glow so the form pops a bit */
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="url"]:focus,
+form input[type="number"]:focus,
+form input[type="password"]:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #77b6ff;
+  box-shadow: 0 0 0 1px rgba(119, 182, 255, 0.35);
+}
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <!-- Clickable logo back to home -->
+    <a class="logo-badge" href="https://creativeforcewrestling.com/">
+      <img src="images/cfwlogo.jpg" alt="CFW logo (back to Home)">
+    </a>
+    <div class="titles">
+      <h1 class="page-title">
+        How to Play
+        <span class="subnav-inline">
+          <a href="https://creativeforcewrestling.com/">Home</a> |
+          <a href="https://roster.creativeforcewrestling.com/">Roster</a> |
+          <a href="https://shows.creativeforcewrestling.com/">Show Archive</a>
+        </span>
+      </h1>
+      <p class="lead">
+        🎲 This page is your invitation to join and play.
+      </p>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Intro / What CFW Is -->
+  <section>
+    <h2>What Is CFW?</h2>
+    <div class="card">
+      <p>
+        Creative Force Wrestling is an <strong>eFed</strong> — a written wrestling universe where matches,
+        stories, and characters all play out like a TV show.
+      </p>
+      <p>
+        CFW started as a <strong>solo passion project</strong>, built from a love of booking wrestling cards and
+        telling long-term stories. Because it began as a one-person wrestling booking game, it can still
+        run solo — but it’s designed to be <strong>very adaptable</strong> as more people join in.
+      </p>
+      <p>
+        The world is open-ended. You can simply submit a wrestler and watch what happens, or you can become
+        more hands-on and help shape what happens next.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Ways to Play -->
+  <section>
+    <h2>Ways to Play</h2>
+    <div class="grid">
+      <div class="card style-pop">
+        <h3>Create a Wrestler</h3>
+        <p>
+          Build a character, send them into the world, and see what unfolds. Your wrestler can appear on
+          shows, rack up wins and losses, and become part of ongoing rivalries and stories.
+        </p>
+      </div>
+      <div class="card style-pop">
+        <h3>Roleplay & React</h3>
+        <p>
+          Take a more active role by writing promos, reacting to match results, and leaning into who your
+          character is — their attitude, voice, and choices in this universe.
+        </p>
+      </div>
+      <div class="card style-pop">
+        <h3>Help Book the World</h3>
+        <p>
+          If you love the “backstage” side, you can help pitch or shape matches, feuds, and storylines.
+          CFW is flexible enough to support collaborative booking while keeping dice at the center.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shows / Structure -->
+  <section>
+    <h2>Shows & Structure</h2>
+    <div class="grid">
+      <div class="card style-pop">
+        <h3>Black Light</h3>
+        <p>
+          The flagship show. Black Light focuses on storytelling, angles, and big matches. Episodes are written
+          as PDFs that read like a gritty TV broadcast from an underground indie promotion.
+        </p>
+      </div>
+      <div class="card style-pop">
+        <h3>SpeedRun</h3>
+        <p>
+          A more match-focused show that highlights upcoming prospects and newer talent. SpeedRun is where
+          wrestlers earn their way into the spotlight and build early momentum.
+        </p>
+      </div>
+      <div class="card style-pop">
+        <h3>PPVs</h3>
+        <p>
+          Special events where major feuds pay off and titles are on the line. PPVs are the big emotional
+          peaks of CFW — the fallout from Black Light and SpeedRun all converging in one night.
+        </p>
+      </div>
+    </div>
+    <p class="helper-text">
+      You can read past events any time in the <a href="https://shows.creativeforcewrestling.com/">Show Archive</a>.
+    </p>
+  </section>
+
+  <!-- Dice System -->
+  <section>
+    <h2>Dice System – How Matches Are Decided</h2>
+    <div class="card">
+      <p>
+        CFW is open to a lot of different roleplay styles, but one thing never changes:
+        at the heart of the game is a <strong>dice system</strong>. Every match result is determined by dice.
+      </p>
+      <ul>
+        <li>Matches use a simple <strong>best-of-five</strong> roll system.</li>
+        <li>Each side rolls; the higher roll wins the round. First to 3 round wins takes the match.</li>
+        <li>Some matches may include small dice advantages tied to division rules or story stakes. These are always applied fairly, and full dice transparency is available upon request.</li>
+        <li>The dice decide who wins and loses — the story is written around whatever happens.</li>
+      </ul>
+      <p class="helper-text">
+        If you want to experiment with the system yourself, you can use the
+        <a href="https://roster.creativeforcewrestling.com/">Match Randomizer</a> on the Roster page.
+      </p>
+    </div>
+  </section>
+
+  <!-- Create a Wrestler -->
+  <section>
+    <h2>Create a Wrestler</h2>
+    <div class="card">
+      <p>
+        You don’t need a huge bio or a novel to get started. A clear idea and a few key details
+        are enough. Think about:
+      </p>
+      <ul>
+        <li><strong>Name & Alignment</strong> – who they are, and whether they’re a face, heel, or tweener.</li>
+        <li><strong>Look & Style</strong> – gear, vibe, body type, and wrestling style (brawler, high-flyer, technical, etc.).</li>
+        <li><strong>Personality & Motivation</strong> – what they want in CFW and how they carry themselves.</li>
+        <li><strong>Moves</strong> – at least one finisher and a couple of signature moves.</li>
+      </ul>
+      <p>
+  Submitting a character puts them right into the CFW universe — ready for shows, surprises, and long-term storytelling. Anyone can break out, and anything can happen.
+      </p>
+    </div>
+  </section>
+
+  <!-- Submission Form -->
+  <section>
+    <h2>Join the Game – Character Submission</h2>
+    <div class="card">
+      <p>
+        To play, you can reach out directly on Discord or start here by submitting a character concept.
+        This form gives the basic info needed to drop your wrestler into the world.
+      </p>
+
+      <!-- Replace action with your actual handler (Netlify, Zapier, Google Forms, etc.) -->
+      <form action="#" method="post">
+        <div class="form-row two">
+          <div>
+            <label for="handle">Your Name / Handle</label>
+            <input type="text" id="handle" name="handle" placeholder="Discord / username / alias">
+          </div>
+          <div>
+            <label for="discord">Discord Username</label>
+            <input type="text" id="discord" name="discord" placeholder="example: user#1234">
+          </div>
+        </div>
+
+        <div class="form-row two">
+          <div>
+            <label for="email">Email (optional)</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com">
+          </div>
+          <div>
+            <label for="alignment">Alignment</label>
+            <select id="alignment" name="alignment">
+              <option value="">Select one...</option>
+              <option value="face">Face</option>
+              <option value="heel">Heel</option>
+              <option value="tweener">Tweener</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row two">
+          <div>
+            <label for="wrestler-name">Wrestler Name</label>
+            <input type="text" id="wrestler-name" name="wrestler_name" placeholder="Ring name">
+          </div>
+          <div>
+            <label for="nicknames">Nicknames / Monikers</label>
+            <input type="text" id="nicknames" name="nicknames" placeholder="The Foundry's Favorite, etc.">
+          </div>
+        </div>
+
+        <div class="form-row two">
+          <div>
+            <label for="height-weight">Height &amp; Weight</label>
+            <input type="text" id="height-weight" name="height_weight" placeholder="Example: 6'1&quot; / 220 lbs">
+          </div>
+          <div>
+            <label for="billed-from">Billed From</label>
+            <input type="text" id="billed-from" name="billed_from" placeholder="City / weird location">
+          </div>
+        </div>
+
+        <div>
+          <label for="style">Wrestling Style</label>
+          <input type="text" id="style" name="style" placeholder="Brawler, high-flyer, technical, hybrid, etc.">
+        </div>
+
+        <div>
+          <label for="bio">Character Bio</label>
+          <textarea id="bio" name="bio" placeholder="Description of who they are and what they want in CFW."></textarea>
+        </div>
+
+        <div>
+          <label for="Wrestkers look">Wrestler Look Description</label>
+          <textarea id="wrestlers look" name="wrestlers look" placeholder="Describe what your wrestler looks like — gear, vibe, build, hair, colors, personality in their presentation. I’ll work with you to create a custom AI render."></textarea>
+        </div>
+
+        <div>
+          <label for="signatures">Signature / Finisher Moves</label>
+          <textarea id="signatures" name="signatures" placeholder="Signature / Finisher moves that help define their style."></textarea>
+        </div>
+
+        <div>
+          <label for="music">Entrance Music</label>
+          <input type="text" id="music" name="music" placeholder="Song/artist or a general vibe.">
+        </div>
+
+        <div class="form-row two">
+          <div>
+<label for="storyPreference">Story Preference</label>
+<select id="storyPreference" name="storyPreference" required>
+  <option value="" disabled selected>Select one...</option>
+  <option value="High Drama & Intensity">High Drama & Intensity</option>
+  <option value="Underdog & Heart">Underdog & Heart</option>
+  <option value="Mystery / Weird">Mystery / Weird </option>
+  <option value="Lighthearted / Fun">Lighthearted / Fun</option>
+  <option value="Surprise Me">Surprise Me</option>
+</select>
+          </div>
+          <div>
+<label for="involvementLevel">Involvement Level</label>
+<select id="involvementLevel" name="involvementLevel" required>
+  <option value="" disabled selected>Select one...</option>
+  <option value="Full — Promos & Ideas">Full — Promos & Ideas</option>
+  <option value="Light — React to Results">Light — React to Results</option>
+  <option value="Minimal — GM Drives Everything">Minimal — GM Drives Everything</option>
+  <option value="Surprise Me">Surprise Me</option>
+</select>
+
+          </div>
+        </div>
+
+        <div>
+          <label for="notes">Anything Else We Should Know?</label>
+          <textarea id="notes" name="notes" placeholder="Extra notes, ideas, or specific hopes for the character."></textarea>
+        </div>
+
+        <div class="submit-row">
+          <button type="submit">Submit Character</button>
+        </div>
+
+        <p class="helper-text">
+By submitting, you’re giving permission for your character to appear in CFW shows, graphics, and storylines. CFW is a chill, creative space — no hateful or discriminatory content is allowed. Keep it respectful, keep it weird, keep it fun.
+        </p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>© <span id="y"></span> Creative Force Wrestling</footer>
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
