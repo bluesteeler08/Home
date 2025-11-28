@@ -458,7 +458,14 @@ form label {
       </p>
 
       <!-- Replace action with your actual handler (Netlify, Zapier, Google Forms, etc.) -->
-      <form action="#" method="post">
+      <form action="https://api.web3forms.com/submit" method="POST">
+          <!-- Web3Forms required fields -->
+  <input type="hidden" name="access_key" value="d23f8534-c790-467c-b6f7-5ebe3899c4bd">
+  <input type="hidden" name="subject" value="New CFW How To Play submission">
+  <input type="hidden" name="from_name" value="Creative Force Wrestling Website">
+  <!-- Simple spam honeypot -->
+  <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
         <div class="form-row two">
           <div>
             <label for="handle">Your Name / Handle</label>
