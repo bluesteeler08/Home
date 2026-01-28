@@ -81,7 +81,7 @@
     .titles h1{margin:0;font-size:clamp(22px,3vw,30px);line-height:1.05}
     .titles p{margin:6px 0 0;color:var(--muted);max-width:640px}
 
-    main{max-width:1120px;margin:18px auto 80px;padding:0 18px}
+    main{max-width:1120px;margin:18px auto 30px;padding:0 18px}
     section{margin:28px 0 44px}
 
     h2{
@@ -104,34 +104,33 @@
     .card:hover,.item:hover{background:var(--panel2);border-color:#3a3a44;transform:translateY(-2px)}
 
     /* Subtle frosty blue tint for all cards that are NOT style-pop */
-.card:not(.style-pop) {
-  background:
-    radial-gradient(circle at top left,
-      rgba(160, 195, 230, 0.16),
-      transparent 55%
-    ),
-    radial-gradient(circle at bottom right,
-      rgba(90, 120, 160, 0.14),
-      transparent 60%
-    ),
-    var(--panel);
-  border-color: rgba(140, 170, 210, 0.45);
-}
+    .card:not(.style-pop) {
+      background:
+        radial-gradient(circle at top left,
+          rgba(160, 195, 230, 0.16),
+          transparent 55%
+        ),
+        radial-gradient(circle at bottom right,
+          rgba(90, 120, 160, 0.14),
+          transparent 60%
+        ),
+        var(--panel);
+      border-color: rgba(140, 170, 210, 0.45);
+    }
 
-.card:not(.style-pop):hover {
-  background:
-    radial-gradient(circle at top left,
-      rgba(180, 210, 240, 0.22),
-      transparent 55%
-    ),
-    radial-gradient(circle at bottom right,
-      rgba(110, 140, 180, 0.20),
-      transparent 60%
-    ),
-    var(--panel2);
-  border-color: rgba(175, 205, 245, 0.75);
-}
-
+    .card:not(.style-pop):hover {
+      background:
+        radial-gradient(circle at top left,
+          rgba(180, 210, 240, 0.22),
+          transparent 55%
+        ),
+        radial-gradient(circle at bottom right,
+          rgba(110, 140, 180, 0.20),
+          transparent 60%
+        ),
+        var(--panel2);
+      border-color: rgba(175, 205, 245, 0.75);
+    }
 
     a{color:#7ef3ff;text-decoration:none;font-weight:500;transition:color .15s ease}
     a:hover{color:var(--hover)}
@@ -196,7 +195,8 @@
       font-size:1rem;
     }
 
-    /* Form styling */
+    /* --- FORM STYLING (CLEANED & UNIFIED) --- */
+
     form {
       margin-top: 10px;
       display: grid;
@@ -210,27 +210,25 @@
       margin-bottom:4px;
     }
 
-    input[type="text"],
-    input[type="email"],
-    textarea,
-    select {
+    form input,
+    form select,
+    form textarea {
       width: 100%;
       padding: 10px 11px;
       border-radius: 10px;
-      border: 1px solid #2a2a3f;
-      background: #101018;
+      border: 1px solid rgba(140,170,210,0.7);  /* brighter, matches card vibe */
+      background: #050509;
       color: var(--ink);
       font: 0.95rem/1.5 Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       outline: none;
       transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
     }
 
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    textarea:focus,
-    select:focus {
-      border-color: var(--hover);
-      box-shadow:0 0 0 1px rgba(178,111,255,.4);
+    form input:focus,
+    form select:focus,
+    form textarea:focus {
+      border-color: rgba(180,210,255,0.95);
+      box-shadow:0 0 0 1px rgba(160,195,255,.4);
       background:#141422;
     }
 
@@ -285,73 +283,21 @@
       color: var(--muted);
       margin-top: 3px;
     }
-.card.style-pop {
-  background:
-    radial-gradient(circle at top right, rgba(150,190,255,0.20), transparent 65%),
-    radial-gradient(circle at bottom left, rgba(170,210,255,0.18), transparent 60%),
-    linear-gradient(140deg, rgba(55,70,100,0.60), rgba(30,40,60,0.60));
-  border: 1px solid rgba(165,200,255,0.25);
-  border-radius: 14px;
-  backdrop-filter: blur(2px);
+
+    /* POP card styling */
+    .card.style-pop {
+      background:
+        radial-gradient(circle at top right, rgba(150,190,255,0.20), transparent 65%),
+        radial-gradient(circle at bottom left, rgba(170,210,255,0.18), transparent 60%),
+        linear-gradient(140deg, rgba(55,70,100,0.60), rgba(30,40,60,0.60));
+      border: 1px solid rgba(165,200,255,0.25);
+      border-radius: 14px;
+      backdrop-filter: blur(2px);
+    }
+    /* Make form labels white again */
+form label {
+  color: #ffffff !important;
 }
-
-form label,
-.form-group label,
-.field-label {
-    color: #ffffff !important;
-}
-
-/* Stronger borders for form inputs */
-form input,
-form select,
-form textarea {
-  border: 1.5px solid rgba(140, 170, 210, 0.35); /* subtle but visible */
-  background: var(--panel);
-  color: var(--text);
-  border-radius: 10px;
-  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
-}
-
-/* Focus effect (when clicked or typing) */
-form input:focus,
-form select:focus,
-form textarea:focus {
-  border-color: rgba(180, 210, 255, 0.85);
-  box-shadow: 0 0 8px rgba(160, 195, 255, 0.3);
-  background: var(--panel2);
-  outline: none;
-}
-/* Stronger outline for ALL form fields */
-form input[type="text"],
-form input[type="email"],
-form input[type="url"],
-form input[type="number"],
-form input[type="password"],
-form select,
-form textarea {
-  background: #050509;
-  border: 1px solid rgba(140,170,210,0.75);  /* brighter, same family as card outline */
-  border-radius: 10px;
-  color: #f5f5ff;
-  outline: none;
-}
-
-/* Focus state – subtle glow so the form pops a bit */
-form input[type="text"]:focus,
-form input[type="email"]:focus,
-form input[type="url"]:focus,
-form input[type="number"]:focus,
-form input[type="password"]:focus,
-form select:focus,
-form textarea:focus {
-  border-color: #77b6ff;
-  box-shadow: 0 0 0 1px rgba(119, 182, 255, 0.35);
-}
-
-
-
-
-
 
   </style>
 </head>
@@ -497,7 +443,7 @@ form textarea:focus {
         <li><strong>Moves</strong> – at least one finisher and a couple of signature moves.</li>
       </ul>
       <p>
-  Submitting a character puts them right into the CFW universe — ready for shows, surprises, and long-term storytelling. Anyone can break out, and anything can happen.
+        Submitting a character puts them right into the CFW universe — ready for shows, surprises, and long-term storytelling. Anyone can break out, and anything can happen.
       </p>
     </div>
   </section>
@@ -512,7 +458,14 @@ form textarea:focus {
       </p>
 
       <!-- Replace action with your actual handler (Netlify, Zapier, Google Forms, etc.) -->
-<form action="https://api.web3forms.com/submit" method="POST">
+      <form action="https://api.web3forms.com/submit" method="POST">
+          <!-- Web3Forms required fields -->
+  <input type="hidden" name="access_key" value="d23f8534-c790-467c-b6f7-5ebe3899c4bd">
+  <input type="hidden" name="subject" value="New CFW How To Play submission">
+  <input type="hidden" name="from_name" value="Creative Force Wrestling Website">
+  <!-- Simple spam honeypot -->
+  <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
         <div class="form-row two">
           <div>
             <label for="handle">Your Name / Handle</label>
@@ -573,8 +526,8 @@ form textarea:focus {
         </div>
 
         <div>
-          <label for="Wrestkers look">Wrestler Look Description</label>
-          <textarea id="wrestlers look" name="wrestlers look" placeholder="Describe what your wrestler looks like — gear, vibe, build, hair, colors, personality in their presentation. I’ll work with you to create a custom AI render."></textarea>
+          <label for="wrestlers-look">Wrestler Look Description</label>
+          <textarea id="wrestlers-look" name="wrestlers_look" placeholder="Describe what your wrestler looks like — gear, vibe, build, hair, colors, personality in their presentation. I’ll work with you to create a custom AI render."></textarea>
         </div>
 
         <div>
@@ -589,26 +542,25 @@ form textarea:focus {
 
         <div class="form-row two">
           <div>
-<label for="storyPreference">Story Preference</label>
-<select id="storyPreference" name="storyPreference" required>
-  <option value="" disabled selected>Select one...</option>
-  <option value="High Drama & Intensity">High Drama & Intensity</option>
-  <option value="Underdog & Heart">Underdog & Heart</option>
-  <option value="Mystery / Weird">Mystery / Weird </option>
-  <option value="Lighthearted / Fun">Lighthearted / Fun</option>
-  <option value="Surprise Me">Surprise Me</option>
-</select>
+            <label for="storyPreference">Story Preference</label>
+            <select id="storyPreference" name="storyPreference" required>
+              <option value="" disabled selected>Select one...</option>
+              <option value="High Drama & Intensity">High Drama & Intensity</option>
+              <option value="Underdog & Heart">Underdog & Heart</option>
+              <option value="Mystery / Weird">Mystery / Weird </option>
+              <option value="Lighthearted / Fun">Lighthearted / Fun</option>
+              <option value="Surprise Me">Surprise Me</option>
+            </select>
           </div>
           <div>
-<label for="involvementLevel">Involvement Level</label>
-<select id="involvementLevel" name="involvementLevel" required>
-  <option value="" disabled selected>Select one...</option>
-  <option value="Full — Promos & Ideas">Full — Promos & Ideas</option>
-  <option value="Light — React to Results">Light — React to Results</option>
-  <option value="Minimal — GM Drives Everything">Minimal — GM Drives Everything</option>
-  <option value="Surprise Me">Surprise Me</option>
-</select>
-
+            <label for="involvementLevel">Involvement Level</label>
+            <select id="involvementLevel" name="involvementLevel" required>
+              <option value="" disabled selected>Select one...</option>
+              <option value="Full — Promos & Ideas">Full — Promos & Ideas</option>
+              <option value="Light — React to Results">Light — React to Results</option>
+              <option value="Minimal — GM Drives Everything">Minimal — GM Drives Everything</option>
+              <option value="Surprise Me">Surprise Me</option>
+            </select>
           </div>
         </div>
 
@@ -622,7 +574,7 @@ form textarea:focus {
         </div>
 
         <p class="helper-text">
-By submitting, you’re giving permission for your character to appear in CFW shows, graphics, and storylines. CFW is a chill, creative space — no hateful or discriminatory content is allowed. Keep it respectful, keep it weird, keep it fun.
+          By submitting, you’re giving permission for your character to appear in CFW shows, graphics, and storylines. CFW is a chill, creative space — no hateful or discriminatory content is allowed. Keep it respectful, keep it weird, keep it fun.
         </p>
       </form>
     </div>
