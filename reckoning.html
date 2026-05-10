@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CFW Match Stipulation Randomizer</title>
+<meta name="description" content="Roll one of sixteen Creative Force Wrestling match stipulations. Equal odds. Total chaos.">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+:root{
+  --bg:#0b0b0f;
+  --panel:#14141c;
+  --panel2:#1b1b24;
+  --border:#242437;
+  --ink:#e9e9ef;
+  --muted:#a5a6b2;
+  --accent:#3ea8ff;
+  --hover:#b26fff;
+  --ok:#4cd964;
+  --radius:18px;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(900px 500px at 50% -10%, rgba(126,243,255,.10), transparent 60%),
+    radial-gradient(700px 400px at 15% 0%, rgba(178,111,255,.12), transparent 60%),
+    var(--bg);
+  color:var(--ink);
+  font:16px/1.65 Inter, system-ui, Segoe UI, Arial, sans-serif;
+}
+
+header{
+  max-width:1120px;
+  margin:24px auto 0;
+  padding:18px;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:linear-gradient(180deg, rgba(125,249,255,.08), rgba(178,111,255,.06)), var(--panel);
+  box-shadow:var(--shadow);
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.logo-badge{
+  background:#0b0b0f;
+  border:1px solid #2a2a3d;
+  border-radius:20px;
+  padding:6px 14px;
+  display:inline-flex;
+  box-shadow:0 0 12px rgba(0,0,0,.4);
+}
+
+.logo-badge img{
+  height:85px;
+  width:auto;
+  border-radius:8px;
+  display:block;
+}
+
+h1{
+  margin:0;
+  font-size:clamp(22px,3vw,30px);
+  line-height:1.1;
+}
+
+.subnav-inline{
+  font-size:.95rem;
+  font-weight:500;
+  margin-left:14px;
+  white-space:nowrap;
+}
+
+a{
+  color:#ffffff;
+  text-decoration:none;
+  transition:color .25s ease;
+}
+
+a:hover{color:#c084fc}
+
+header p{
+  margin:8px 0 0;
+  color:var(--muted);
+}
+
+main{
+  max-width:1120px;
+  margin:18px auto 80px;
+  padding:0 18px;
+}
+
+.panel{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+  margin:22px 0;
+}
+
+.roll-zone{
+  text-align:center;
+  padding:28px 18px;
+}
+
+.btn{
+  all:unset;
+  cursor:pointer;
+  padding:14px 22px;
+  border-radius:14px;
+  font-weight:800;
+  letter-spacing:.04em;
+  background:linear-gradient(180deg, #6f57d9, #4832b3);
+  box-shadow:var(--shadow);
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.result{
+  display:none;
+  margin-top:22px;
+  text-align:left;
+  background:linear-gradient(180deg, rgba(76,217,100,.12), rgba(76,217,100,.05));
+  border:1px solid rgba(76,217,100,.25);
+  border-radius:16px;
+  padding:18px;
+}
+
+.roll-number{
+  color:var(--muted);
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+}
+
+.result h2{
+  margin:4px 0 8px;
+  color:#c7f9cc;
+  font-size:28px;
+}
+
+.desc{
+  margin:0 0 12px;
+  color:var(--ink);
+}
+
+.win{
+  padding:12px;
+  background:#101020;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+}
+
+.win strong{
+  color:#7ef3ff;
+}
+
+h3{
+  margin:0 0 14px;
+  letter-spacing:.12em;
+  font-size:.92rem;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+.grid{
+  display:grid;
+  gap:14px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+}
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px 16px;
+  box-shadow:var(--shadow);
+}
+
+.card h4{
+  margin:0 0 6px;
+  color:#7ef3ff;
+}
+
+.card p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.history{
+  display:grid;
+  gap:8px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.history div{
+  background:#101020;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;
+  padding:8px 10px;
+}
+
+footer{
+  color:var(--muted);
+  text-align:center;
+  padding:20px 0;
+  border-top:1px solid #1f1f2c;
+}
+
+@media(max-width:720px){
+  .topbar{align-items:flex-start}
+  .logo-badge img{height:64px}
+  .subnav-inline{
+    display:block;
+    margin-left:0;
+    margin-top:6px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="topbar">
+    <a class="logo-badge" href="https://creativeforcewrestling.com/">
+      <img src="images/test2.png" alt="CFW logo">
+    </a>
+
+    <div>
+      <h1>
+        Stipulation Randomizer
+        <span class="subnav-inline">
+          <a href="https://creativeforcewrestling.com/">Home</a> |
+          <a href="https://roster.creativeforcewrestling.com/">Roster</a> |
+          <a href="https://shows.creativeforcewrestling.com/">Show Archive</a> |
+          <a href="https://creativeforcewrestling.com/play.html">How to Play</a>
+        </span>
+      </h1>
+      <p>
+At SpeedRun 8, Adam Stryker and Killjoy surrender control to the Roll of Reckoning. Sixteen possible match stipulations. Equal odds. One roll determines the battleground for their collision
+      </p>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="panel roll-zone">
+<button class="btn" id="rollBtn">Roll Of Reckoning</button>
+
+    <div class="result" id="result">
+      <div class="roll-number" id="rollNumber"></div>
+      <h2 id="matchName"></h2>
+      <p class="desc" id="matchDesc"></p>
+      <div class="win"><strong>How to win:</strong> <span id="matchWin"></span></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h3>All Possible Stipulations</h3>
+    <div class="grid" id="stipGrid"></div>
+  </section>
+
+  <section class="panel">
+    <h3>Roll History</h3>
+    <div class="history" id="history">
+      <div>No rolls yet.</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>© <span id="y"></span> Creative Force Wrestling</footer>
+
+<script>
+const STIPS = [
+  {
+    name:"Standard Match",
+    desc:"A traditional wrestling match under standard CFW rules.",
+    win:"Win by pinfall, submission, count-out, or disqualification."
+  },
+  {
+    name:"No Disqualification Match",
+    desc:"Rules are thrown out and the referee only exists to declare a winner.",
+    win:"Win by pinfall or submission."
+  },
+  {
+    name:"Falls Count Anywhere",
+    desc:"The match can spill anywhere in the building or surrounding area.",
+    win:"Win by pinfall or submission anywhere."
+  },
+  {
+    name:"Street Fight",
+    desc:"A violent, weapon-friendly fight with no concern for clean wrestling.",
+    win:"Win by pinfall or submission."
+  },
+  {
+    name:"Steel Cage Match",
+    desc:"The ring is surrounded by steel, trapping both competitors inside.",
+    win:"Win by pinfall, submission, or escaping the cage."
+  },
+  {
+    name:"Strap Match",
+    desc:"Both wrestlers are tied together by a leather strap.",
+    win:"Win by pinfall, submission, or touching all four corners."
+  },
+  {
+    name:"Last Man Standing Match",
+    desc:"A survival fight built around punishment, exhaustion, and refusal to stay down.",
+    win:"Win by leaving the opponent unable to answer a ten-count."
+  },
+  {
+    name:"Submission Match",
+    desc:"No shortcuts and no lucky pinfalls. Someone has to give up.",
+    win:"Win only by submission."
+  },
+  {
+    name:"I Quit Match",
+    desc:"The match continues until one wrestler is forced to verbally surrender.",
+    win:"Win by making the opponent say “I quit.”"
+  },
+  {
+    name:"Ladder Match",
+    desc:"A title, contract, or prize hangs above the ring while ladders become legal weapons.",
+    win:"Win by climbing a ladder and retrieving the suspended prize."
+  },
+  {
+    name:"Tables Match",
+    desc:"The goal is simple, but getting there is brutal.",
+    win:"Win by putting the opponent through a table."
+  },
+  {
+    name:"Two Out of Three Falls Match",
+    desc:"A longer test where one fall is not enough to settle the fight.",
+    win:"First wrestler to score two falls wins."
+  },
+  {
+    name:"Bar Brawl Match",
+    desc:"The match takes place inside an actual bar selected by CFW officials. The fight can spill behind the counter, through tables, into bathrooms, or out into the alley.",
+    win:"Win by incapacitating the opponent long enough for a referee ten-count."
+  },
+  {
+    name:"Exploding Ring Match",
+    desc:"A dangerous spectacle match with staged explosive effects around the ring.",
+    win:"Win by pinfall or submission."
+  },
+  {
+    name:"Blood Bath Match",
+    desc:"A no-DQ horror-show fight with a vat of fake blood waiting at ringside.",
+    win:"Win by forcing the opponent into the vat and giving them the blood bath."
+  },
+  {
+    name:"Gates of Hell Match",
+    desc:"A no-DQ spectacle match with two controlled pyro pillars near the ramp. Dangerous, theatrical, and very real-world CFW chaos.",
+    win:"Win by forcing the opponent through the fiery gate."
+  }
+];
+
+const rollBtn = document.getElementById("rollBtn");
+const result = document.getElementById("result");
+const rollNumber = document.getElementById("rollNumber");
+const matchName = document.getElementById("matchName");
+const matchDesc = document.getElementById("matchDesc");
+const matchWin = document.getElementById("matchWin");
+const history = document.getElementById("history");
+const stipGrid = document.getElementById("stipGrid");
+
+function renderGrid(){
+  stipGrid.innerHTML = STIPS.map((s, i) => `
+    <div class="card">
+      <h4>${i + 1}. ${s.name}</h4>
+      <p>${s.desc}</p>
+      <p><strong>Win:</strong> ${s.win}</p>
+    </div>
+  `).join("");
+}
+
+function rollStipulation(){
+  const index = Math.floor(Math.random() * STIPS.length);
+  const stip = STIPS[index];
+
+  result.style.display = "block";
+  rollNumber.textContent = `Roll ${index + 1} of 16`;
+  matchName.textContent = stip.name;
+  matchDesc.textContent = stip.desc;
+  matchWin.textContent = stip.win;
+
+  if(history.children.length === 1 && history.children[0].textContent === "No rolls yet."){
+    history.innerHTML = "";
+  }
+
+  const stamp = new Date().toLocaleString();
+  const line = document.createElement("div");
+  line.textContent = `[${stamp}] Roll ${index + 1}: ${stip.name}`;
+  history.prepend(line);
+}
+
+rollBtn.addEventListener("click", rollStipulation);
+renderGrid();
+
+document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
